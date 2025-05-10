@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Define log file path and log file name -->
+    <property name="LOG_PATH" value="logs" />
+    <property name="LOG_FILE" value="${LOG_PATH}/virtual-power-plant.log" />
+
+    <!-- Rolling File Appender -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- Log file naming pattern with date and index -->
+            <fileNamePattern>${LOG_PATH}/virtual-power-plant.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- Limit log file size to 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+            <!-- Keep a maximum of 30 log files -->
+            <maxHistory>30</maxHistory>
+            <!-- Limit total log file size to 1GB -->
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+
+        <!-- Log format for files -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Console Appender for logging to the console -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Log format for console -->
+            <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root Logger to log INFO, WARN, and ERROR levels -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!-- Specific loggers for certain packages -->
+    <logger name="org.springframework" level="INFO"/>  <!-- Spring framework logs at INFO level -->
+    <logger name="org.hibernate" level="INFO"/>  <!-- Hibernate logs at INFO level -->
+
+    <!-- Log INFO, WARN, and ERROR level logs for your application to the file and console -->
+    <logger name="com.powerledger.virtualpowerplant" level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- Suppress HikariCP Debug logs by changing the log level to ERROR -->
+    <logger name="com.zaxxer.hikari" level="ERROR"/>
+
+    <!-- Suppress Spring Application Shutdown logs -->
+    <logger name="org.springframework.boot.SpringApplication" level="ERROR"/>
+
+</configuration>
