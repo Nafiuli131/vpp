@@ -51,11 +51,13 @@ mvn clean test jacoco:report
 
 ## Architectural Decisions
 
-Layered Architecture: The application follows a classic layered architecture pattern—dividing responsibilities across Controller, Service, and Repository layers. This promotes separation of concerns, maintainability, and scalability.
+# Layered Architecture: The application follows a classic layered architecture pattern—dividing responsibilities across Controller, Service, and Repository layers. This promotes separation of concerns, maintainability, and scalability.
 
 Spring Boot Framework: Chosen for rapid application development, dependency injection, and out-of-the-box support for RESTful services, data validation, and exception handling.
 
 Database Choice: MySQL is used for production-like persistence, while H2 is used for isolated, in-memory testing, ensuring fast and reliable test execution.
+
+Initial Data Insertion: On application startup, a pre-defined set of test data is automatically inserted into the database using a JSON file. This helps ensure the application has baseline data for functionality testing and validation without manual setup.
 
 DTOs and Mappers: Data Transfer Objects (DTOs) are used to decouple internal models from API payloads. This adds flexibility to evolve internal logic without impacting external interfaces.
 
