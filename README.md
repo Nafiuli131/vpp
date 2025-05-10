@@ -51,20 +51,20 @@ mvn clean test jacoco:report
 
 ## Architectural Decisions
 
-Layered Architecture: The application follows a classic layered architecture pattern—dividing responsibilities across Controller, Service, and Repository layers. This promotes separation of concerns, maintainability, and scalability.
+- **Layered Architecture:** The application follows a classic layered architecture pattern—dividing responsibilities across Controller, Service, and Repository layers. This promotes separation of concerns, maintainability, and scalability.
 
-Spring Boot Framework: Chosen for rapid application development, dependency injection, and out-of-the-box support for RESTful services, data validation, and exception handling.
+- **Spring Boot Framework:** Chosen for rapid application development, dependency injection, and out-of-the-box support for RESTful services, data validation, and exception handling.
 
-Database Choice: MySQL is used for production-like persistence, while H2 is used for isolated, in-memory testing, ensuring fast and reliable test execution.
+- **Database Choice:** MySQL is used for production-like persistence, while H2 is used for isolated, in-memory testing, ensuring fast and reliable test execution.
 
-Initial Data Insertion: On application startup, a pre-defined set of test data is automatically inserted into the database using a JSON file. This helps ensure the application has baseline data for functionality testing and validation without manual setup.
+- **Initial Data Insertion:** On application startup, a pre-defined set of test data is automatically inserted into the database using a JSON file. This helps ensure the application has baseline data for functionality testing and validation without manual setup.
 
-DTOs and Mappers: Data Transfer Objects (DTOs) are used to decouple internal models from API payloads. This adds flexibility to evolve internal logic without impacting external interfaces.
+- **DTOs and Mappers:** Data Transfer Objects (DTOs) are used to decouple internal models from API payloads. This adds flexibility to evolve internal logic without impacting external interfaces.
 
-Validation: Jakarta Bean Validation is integrated to ensure input integrity and prevent invalid data from entering the system.
+- **Validation:** Jakarta Bean Validation is integrated to ensure input integrity and prevent invalid data from entering the system.
 
-API Documentation: OpenAPI (via springdoc) is used to auto-generate interactive API documentation, improving developer experience and reducing onboarding time.
+- **API Documentation:** OpenAPI (via springdoc) is used to auto-generate interactive API documentation, improving developer experience and reducing onboarding time.
 
-Test Strategy: Unit and integration tests are written using JUnit, Spring Boot Test, and AssertJ to validate both individual components and end-to-end behavior.
+- **Test Strategy:** Unit and integration tests are written using JUnit, Spring Boot Test, and AssertJ to validate both individual components and end-to-end behavior.
 
-Code Coverage: JaCoCo is integrated to ensure thorough test coverage and to identify untested areas in the codebase.
+- **Code Coverage:** JaCoCo is integrated to ensure thorough test coverage and to identify untested areas in the codebase.
