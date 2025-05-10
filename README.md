@@ -51,7 +51,7 @@ mvn clean test jacoco:report
 
 ## Architectural Decisions
 
-# Layered Architecture: The application follows a classic layered architecture pattern—dividing responsibilities across Controller, Service, and Repository layers. This promotes separation of concerns, maintainability, and scalability.
+Layered Architecture: The application follows a classic layered architecture pattern—dividing responsibilities across Controller, Service, and Repository layers. This promotes separation of concerns, maintainability, and scalability.
 
 Spring Boot Framework: Chosen for rapid application development, dependency injection, and out-of-the-box support for RESTful services, data validation, and exception handling.
 
